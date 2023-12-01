@@ -30,7 +30,7 @@ musicaInput.addEventListener('change', () => {
 })
 
 focoButton.addEventListener('click', () => {
-    tempoDecorrido = 1500;
+    tempoDecorrido = 5;
     alteraContexto('foco');
     focoButton.classList.add('active');
 })
@@ -84,6 +84,11 @@ const contagemRegressiva = () => {
     if(tempoDecorrido <= 0) {
         overtimeSound.play();
         alert('temporizador zerado! pode descansar meu jovem guerreiro.');
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco'
+        if (focoAtivo) {
+            const evento = new CustomEvent('FocoFinalizado')
+            document.dispatchEvent(evento)
+        }
         zerar();
         return;
     }

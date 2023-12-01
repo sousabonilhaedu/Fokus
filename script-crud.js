@@ -115,7 +115,7 @@ listaTarefas.forEach(tarefa => {
     ulTarefa.append(criaTarefaDisplay);
 })
 
-document.addEventListener('focoFinalizado', () => {
+document.addEventListener('FocoFinalizado', () => {
     if(tarefaSelecionada && liTarefaSelecionada){
         liTarefaSelecionada.classList.remove('app__section-task-list-item-active');
         liTarefaSelecionada.classList.add('app__section-task-list-item-complete');
@@ -144,7 +144,7 @@ const removeTarefas = (somenteCompleta) =>{
         }
         
     atualizaTarefa();
-    textArea.value = '';
+    document.querySelector('.app__section-active-task-description').textContent = '';
 }
 
 removeConcluidas.onclick = () => removeTarefas(true);
